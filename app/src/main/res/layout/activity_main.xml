@@ -4,26 +4,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="bottom"
     tools:context=".MainActivity" >
 
-    <EditText
-        android:id="@+id/dataView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorText"
-        android:ems="10"
-        android:gravity="end"
-        android:inputType="textPersonName"
-        android:paddingTop="80dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="50dp"
-        android:text="@string/text_zero"
-        android:textSize="48sp"
-        tools:ignore="RtlSymmetry" />
+        android:layout_height="200dp">
+
+        <EditText
+            android:id="@+id/operation"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="end"
+            android:background="@color/colorText"
+            android:text="@string/text_zero"
+            android:textSize="48sp"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <EditText
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="end"
+            android:background="@color/colorText"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/operation"
+         />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/colorText">
 
         <TableRow
