@@ -19,6 +19,7 @@
             android:background="@color/colorText"
             android:text="@string/text_zero"
             android:textSize="48sp"
+            android:maxLines="1"
             app:layout_constraintTop_toTopOf="parent"
             />
 
@@ -30,6 +31,7 @@
             android:background="@color/colorText"
             android:textSize="60sp"
             android:textStyle="bold"
+            android:maxLines="1"
             app:layout_constraintTop_toBottomOf="@+id/operation"
          />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -211,6 +213,15 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/btn_c"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@color/buttonsBackgroundColor"
+                android:text="@string/text_c"
+                android:textSize="24sp" />
+
+            <Button
                 android:id="@+id/btn_zero"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -226,15 +237,6 @@
                 android:layout_weight="1"
                 android:background="@color/buttonsBackgroundColor"
                 android:text="@string/text_comma"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/btn_dot"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:background="@color/buttonsBackgroundColor"
-                android:text="@string/text_dot"
                 android:textSize="24sp" />
 
             <Button

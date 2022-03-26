@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">calcultorApp</string>
     <string name="text_equal">=</string>
-    <string name="text_dot">.</string>
     <string name="text_comma">,</string>
     <string name="text_zero">0</string>
+    <string name="text_c">c</string>
     <string name="text_sum">+</string>
     <string name="text_nine">9</string>
     <string name="text_eight">8</string>

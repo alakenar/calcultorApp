@@ -105,10 +105,6 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-            btnDot.setOnClickListener {
-                btnClickValue += "."
-                operation.setText(btnClickValue)
-            }
 
             btnAc.setOnClickListener {
                 btnClickValue = ""
@@ -127,6 +123,10 @@ class MainActivity : AppCompatActivity() {
 
             }
 
+            btnC.setOnClickListener {
+
+            }
+
             btnMinus.setOnClickListener {
 
                 if (btnClickValue.isNotEmpty()) {
@@ -140,121 +140,299 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             btnPercent.setOnClickListener {
+                if(sumClick || subClick || multiplyClick || divClick ){
+
+                    if(sumClick){
+                        newValue = btnClickValue.substringAfter("+")
+                        resultText = (newValue.toDouble() + tempValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(resultText.toString())
+
+                    }else if(subClick){
+                        newValue = btnClickValue.substringAfter("-")
+                        resultText = (tempValue.toDouble() - newValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(resultText.toString())
+
+                    }else if(multiplyClick){
+                        newValue = btnClickValue.substringAfter("*")
+                        resultText = (tempValue.toDouble() * newValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+
+                    }else if(divClick){
+                        newValue = btnClickValue.substringAfter("/")
+                        resultText = (tempValue.toDouble() / newValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+                    }
+                } else{
+                    if (isFirstPercent) {
+                        tempValue = btnClickValue
+                        btnClickValue += "%"
+                        operation.setText(btnClickValue)
+                        isFirstMultiply = false
+                    } else {
+
+                        newValue = btnClickValue.substringAfter("%")
+                        resultText = ((tempValue.toDouble() * newValue.toDouble()) / 100)
+                        operation.setText("$resultText%")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+                    }
+                }
                 percentClick = true
                 divClick = false
                 multiplyClick = false
                 subClick = false
                 sumClick = false
-
-                if (isFirstPercent) {
-                    tempValue = btnClickValue
-                    btnClickValue += "%"
-                    operation.setText(btnClickValue)
-                    isFirstMultiply = false
-                } else {
-
-                    newValue = btnClickValue.substringAfter("%")
-                    resultText = (("$tempValue".toDouble() * "$newValue".toDouble()) / 100)
-                    operation.setText("$resultText%")
-                    btnClickValue = operation.text.toString()
-                    tempValue = resultText.toString()
-                    result.setText(result.toString())
-                }
             }
 
             btnDiv.setOnClickListener {
+
+                if(sumClick || subClick || multiplyClick || percentClick ){
+
+                    if(sumClick){
+                        newValue = btnClickValue.substringAfter("+")
+                        resultText = (newValue.toDouble() + tempValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(resultText.toString())
+
+                    }else if(subClick){
+                        newValue = btnClickValue.substringAfter("-")
+                        resultText = (tempValue.toDouble() - newValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(resultText.toString())
+
+                    }else if(multiplyClick){
+                        newValue = btnClickValue.substringAfter("*")
+                        resultText = (tempValue.toDouble() * newValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+
+                    }else if(percentClick){
+                        newValue = btnClickValue.substringAfter("%")
+                        resultText = ((tempValue.toDouble() * newValue.toDouble()) / 100)
+                        operation.setText("$resultText%")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+                    }
+                } else{
+                    if (isFirstDiv) {
+                        tempValue = btnClickValue
+                        btnClickValue += "/"
+                        operation.setText(btnClickValue)
+                        isFirstMultiply = false
+                    } else {
+
+                        newValue = btnClickValue.substringAfter("/")
+                        resultText = (tempValue.toDouble() / newValue.toDouble())
+                        operation.setText("$resultText/")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+                    }
+                }
                 divClick = true
                 multiplyClick = false
                 subClick = false
                 sumClick = false
                 percentClick = false
-
-                if (isFirstDiv) {
-                    tempValue = btnClickValue
-                    btnClickValue += "/"
-                    operation.setText(btnClickValue)
-                    isFirstMultiply = false
-                } else {
-
-                    newValue = btnClickValue.substringAfter("/")
-                    resultText = ("$tempValue".toDouble() / "$newValue".toDouble())
-                    operation.setText("$resultText/")
-                    btnClickValue = operation.text.toString()
-                    tempValue = resultText.toString()
-                    result.setText(result.toString())
-                }
             }
             btnMultiply.setOnClickListener {
+
+                if(sumClick || subClick || divClick || percentClick){
+
+                    if (sumClick) {
+                        newValue = btnClickValue.substringAfter("+")
+                        resultText = (newValue.toDouble() + tempValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(resultText.toString())
+
+                    } else if (subClick) {
+                        newValue = btnClickValue.substringAfter("-")
+                        resultText = (tempValue.toDouble() - newValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(resultText.toString())
+
+                    } else if (divClick) {
+                        newValue = btnClickValue.substringAfter("/")
+                        resultText = (tempValue.toDouble() / newValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+
+                    }else if(percentClick){
+                        newValue = btnClickValue.substringAfter("%")
+                        resultText = ((tempValue.toDouble() * newValue.toDouble()) / 100)
+                        operation.setText("$resultText%")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+                    }
+                } else{
+                        if (isFirstMultiply) {
+                            tempValue = btnClickValue
+                            btnClickValue += "*"
+                            operation.setText(btnClickValue)
+                            isFirstMultiply = false
+                        } else {
+
+                            newValue = btnClickValue.substringAfter("*")
+                            resultText = (tempValue.toDouble() * newValue.toDouble())
+                            operation.setText("$resultText*")
+                            btnClickValue = operation.text.toString()
+                            tempValue = resultText.toString()
+                            result.setText(result.toString())
+                        }
+                }
 
                 multiplyClick = true
                 subClick = false
                 sumClick = false
                 divClick = false
                 percentClick = false
-
-                if (isFirstMultiply) {
-                    tempValue = btnClickValue
-                    btnClickValue += "*"
-                    operation.setText(btnClickValue)
-                    isFirstMultiply = false
-                } else {
-
-                    newValue = btnClickValue.substringAfter("*")
-                    resultText = ("$tempValue".toDouble() * "$newValue".toDouble())
-                    operation.setText("$resultText*")
-                    btnClickValue = operation.text.toString()
-                    tempValue = resultText.toString()
-                    result.setText(result.toString())
-                }
             }
 
             btnSub.setOnClickListener {
+
+                if (sumClick || multiplyClick || divClick || percentClick) {
+
+                    if (sumClick) {
+                        newValue = btnClickValue.substringAfter("+")
+                        resultText = (newValue.toDouble() + tempValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(resultText.toString())
+                    } else if (multiplyClick) {
+                        newValue = btnClickValue.substringAfter("*")
+                        resultText = (tempValue.toDouble() * newValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+                    } else if (divClick) {
+                        newValue = btnClickValue.substringAfter("/")
+                        resultText = (tempValue.toDouble() / newValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+                    } else if (percentClick) {
+                        newValue = btnClickValue.substringAfter("%")
+                        resultText = ((tempValue.toDouble() * newValue.toDouble()) / 100)
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+                    }
+                } else {
+
+                    if (isFirstSub) {
+                        tempValue = btnClickValue // girilen değeri geçici bir değişkene atadık.
+                        btnClickValue += "-" // yazılan her değerden sonrası için işlem işaretini ekledik.
+                        operation.setText(btnClickValue) // operation textine girilen değeri çağırdık.
+                        isFirstSub = false
+
+                    } else {
+                        newValue =
+                            btnClickValue.substringAfter("-") // string değeri içindeki değerden sonra girilen değeri istedik.
+                        resultText =
+                            (tempValue.toDouble() - newValue.toDouble())  // result textine geçici olarak atadağımız değişken ile yeni değerin işlemini gerçekleştirdik.
+                        operation.setText("$resultText-") // resultexte atadığımız değeri operation textine çağırdık.
+                        btnClickValue = operation.text.toString() //
+                        tempValue = resultText.toString()
+                        result.setText(resultText.toString())
+                    }
+                }
 
                 subClick = true
                 sumClick = false
                 multiplyClick = false
                 divClick = false
                 percentClick = false
-
-                if (isFirstSub) {
-                    tempValue = btnClickValue // girilen değeri geçici bir değişkene atadık.
-                    btnClickValue += "-" // yazılan her değerden sonrası için işlem işaretini ekledik.
-                    operation.setText(btnClickValue) // operation textine girilen değeri çağırdık.
-                    isFirstSub = false
-
-                } else {
-                    newValue = btnClickValue.substringAfter("-") // string değeri içindeki değerden sonra girilen değeri istedik.
-                    resultText = (tempValue.toDouble() - newValue.toDouble())  // result textine geçici olarak atadağımız değişken ile yeni değerin işlemini gerçekleştirdik.
-                    operation.setText("$resultText-") // resultexte atadığımız değeri operation textine çağırdık.
-                    btnClickValue = operation.text.toString() //
-                    tempValue = resultText.toString()
-                    result.setText(resultText.toString())
-                }
             }
+
 
             btnSum.setOnClickListener {
 
+                if (subClick || multiplyClick || divClick || percentClick) {
+
+                    if (subClick) {
+
+                        newValue = btnClickValue.substringAfter("-")
+                        resultText = (tempValue.toDouble() - newValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(resultText.toString())
+                    } else if (multiplyClick) {
+                        newValue = btnClickValue.substringAfter("*")
+                        resultText = (tempValue.toDouble() * newValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+                    } else if (divClick) {
+                        newValue = btnClickValue.substringAfter("/")
+                        resultText = (tempValue.toDouble() / newValue.toDouble())
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+                    } else if (percentClick) {
+                        newValue = btnClickValue.substringAfter("%")
+                        resultText = ((tempValue.toDouble() * newValue.toDouble()) / 100)
+                        operation.setText("$resultText")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(result.toString())
+                    }
+                } else {
+                    if (isFirstSum) {
+                        tempValue = btnClickValue
+                        btnClickValue += "+"    // "$tempValue+" ikisi de aynı anlama gelir.
+                        operation.setText(btnClickValue)
+                        isFirstSum = false
+                    } else {
+                        newValue = btnClickValue.substringAfter("+")
+                        resultText = (newValue.toDouble() + tempValue.toDouble())
+                        operation.setText("$resultText+")
+                        btnClickValue = operation.text.toString()
+                        tempValue = resultText.toString()
+                        result.setText(resultText.toString())
+                    }
+                }
                 sumClick = true
                 subClick = false
                 multiplyClick = false
                 divClick = false
                 percentClick = false
 
-                if (isFirstSum) {
-                    tempValue = btnClickValue
-                    btnClickValue += "+"    // "$tempValue+" ikisi de aynı anlama gelir.
-                    operation.setText(btnClickValue)
-                    isFirstSum = false
-                } else {
-                    newValue = btnClickValue.substringAfter("+")
-                    resultText = (newValue.toDouble() + tempValue.toDouble())
-                    operation.setText("$resultText+")
-                    btnClickValue = operation.text.toString()
-                    tempValue = resultText.toString()
-                    result.setText(resultText.toString())
-                }
-
             }
+
             btnEqual.setOnClickListener {
 
                 if (sumClick) {
@@ -262,38 +440,45 @@ class MainActivity : AppCompatActivity() {
                     resultText = (newValue.toDouble() + tempValue.toDouble())
                     operation.setText(resultText.toString())
                     result.setText(resultText.toString())
-                    // btnClickValue= resultText.toString()
+                    btnClickValue= resultText.toString()
 
                 } else if (subClick) {
                     newValue = btnClickValue.substringAfter("-")
                     resultText = (tempValue.toDouble() - newValue.toDouble())
                     operation.setText(resultText.toString())
                     result.setText(resultText.toString())
-                    // btnClickValue= resultText.toString()
+                    btnClickValue= resultText.toString()
 
                 } else if (multiplyClick) {
                     newValue = btnClickValue.substringAfter("*")
                     resultText = (tempValue.toDouble() * newValue.toDouble())
                     operation.setText((resultText.toString()))
                     result.setText(resultText.toString())
+                    btnClickValue= resultText.toString()
 
-                }else if (divClick){
+
+                } else if (divClick) {
                     newValue = btnClickValue.substringAfter("/")
                     resultText = (tempValue.toDouble() / newValue.toDouble())
                     operation.setText(resultText.toString())
                     result.setText(resultText.toString())
+                    btnClickValue= resultText.toString()
+
 
                 } else if (percentClick) {
-                    newValue= btnClickValue.substringAfter("%")
-                    resultText=((tempValue.toDouble() * newValue.toDouble()) / 100)
+                    newValue = btnClickValue.substringAfter("%")
+                    resultText = ((tempValue.toDouble() * newValue.toDouble()) / 100)
                     operation.setText(resultText.toString())
                     result.setText((resultText.toString()))
-            }
+                    btnClickValue= resultText.toString()
 
+                }
+
+            }
         }
     }
 }
-}
+
 
 
 
