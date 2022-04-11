@@ -21,6 +21,7 @@ var multiplyClick = false
 var divClick = false
 var percentClick = false
 var commaClick=false
+var isFirstMinus= true
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,7 +101,7 @@ class MainActivity : AppCompatActivity() {
 
 
                 }
-                btnClickValue += ","
+                btnClickValue += "."
                 operation.setText(btnClickValue)
 
                 /* if (btnClickValue.isNotEmpty()) {
@@ -112,7 +113,6 @@ class MainActivity : AppCompatActivity() {
                      }
                      operation.setText(btnClickValue)
                  } */
-
             }
 
 
@@ -144,6 +144,16 @@ class MainActivity : AppCompatActivity() {
             }
 
             btnMinus.setOnClickListener {
+
+                    /*if (isFirstMinus) {
+                        btnClickValue += "-$btnClickValue"
+                        operation.setText(btnClickValue)
+                        isFirstMinus = false
+                    } else {
+                        btnClickValue += "$btnClickValue"
+                        operation.setText(btnClickValue)
+                    }*/
+
 
                 if (btnClickValue.isNotEmpty()) {
 
@@ -209,7 +219,7 @@ class MainActivity : AppCompatActivity() {
                         tempValue = btnClickValue
                         btnClickValue += "%"
                         operation.setText(btnClickValue)
-                        isFirstMultiply = false
+                        isFirstPercent = false
                     } else {
 
                         newValue = btnClickValue.substringAfter("%")
@@ -278,7 +288,7 @@ class MainActivity : AppCompatActivity() {
                         tempValue = btnClickValue
                         btnClickValue += "/"
                         operation.setText(btnClickValue)
-                        isFirstMultiply = false
+                        isFirstDiv = false
                     } else {
 
                         newValue = btnClickValue.substringAfter("/")
